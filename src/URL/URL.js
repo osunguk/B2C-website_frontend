@@ -1,23 +1,22 @@
-const storelist =     'http://127.0.0.1:8000/store/';
-const storefile =     'http://127.0.0.1:8000/store-file/';
-const mystorefile =   'http://127.0.0.1:8000/mystore-file/';
-const mystore =       'http://127.0.0.1:8000/mystore/';
-const review =        'http://127.0.0.1:8000/review/';
-const reviewfile =    'http://127.0.0.1:8000/review-file/';
-const re_review =     'http://127.0.0.1:8000/review-comment/';
-const token_refresh = 'http://127.0.0.1:8000/api-token-refresh/'
-const token_auth =    'http://127.0.0.1:8000/api-token-auth/'
-const currentuser =   'http://127.0.0.1:8000/current-user/'
-const signup =        'http://127.0.0.1:8000/rest-auth/registration/signup/';
-const mystoreTag =    'http://127.0.0.1:8000/mystore-tag/';
-const tagging =       'http://127.0.0.1:8000/tagging-store/';
-const tag =           'http://127.0.0.1:8000/tag/';
-const storetagList =  'http://127.0.0.1:8000/StoreTags/'
+const storelist =     'https://powerful-tor-66622.herokuapp.com/store/';
+const storefile =     'https://powerful-tor-66622.herokuapp.com/store-file/';
+const mystorefile =   'https://powerful-tor-66622.herokuapp.com/mystore-file/';
+const mystore =       'https://powerful-tor-66622.herokuapp.com/mystore/';
+const review =        'https://powerful-tor-66622.herokuapp.com/review/';
+const reviewfile =    'https://powerful-tor-66622.herokuapp.com/review-file/';
+const re_review =     'https://powerful-tor-66622.herokuapp.com/review-comment/';
+const token_refresh = 'https://powerful-tor-66622.herokuapp.com/api-token-refresh/'
+const token_auth =    'https://powerful-tor-66622.herokuapp.com/api-token-auth/'
+const currentuser =   'https://powerful-tor-66622.herokuapp.com/current-user/'
+const signup =        'https://powerful-tor-66622.herokuapp.com/rest-auth/registration/signup/';
+const mystoreTag =    'https://powerful-tor-66622.herokuapp.com/mystore-tag/';
+const tagging =       'https://powerful-tor-66622.herokuapp.com/tagging-store/';
+const tag =           'https://powerful-tor-66622.herokuapp.com/tag/';
+const storetagList =  'https://powerful-tor-66622.herokuapp.com/StoreTags/'
 
-const login =         'http://127.0.0.1:8000/rest-auth/login/';
-const logout =        'http://127.0.0.1:8000/rest-auth/logout/';
-const userlist =      'http://127.0.0.1:8000/user/';
-
+const login =         'https://powerful-tor-66622.herokuapp.com/rest-auth/login/';
+const logout =        'https://powerful-tor-66622.herokuapp.com/rest-auth/logout/';
+const userlist =      'https://powerful-tor-66622.herokuapp.com/user/';
 
 
 
