@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Login.css'
 import axios from "axios";
-import URL from '../../URL/URL'
+import URL from '../../../URL/URL'
 import KakaoLogin from 'react-kakao-login'
 import NaverLogin from 'react-naver-login';
 import FacebookLogin from 'react-facebook-login';

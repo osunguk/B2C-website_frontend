@@ -209,23 +209,29 @@ class DetailStore extends Component {
   submit_tag = (e) => {
     var taged = $('input:radio[name="tag"]:checked').val();
     e.preventDefault()
-    axios.post(`${URL.storetagList}`,{
-      s_id: this.props.store_id,
-      t_id: taged,
-      u_id: localStorage.getItem('user_id')
-    } ,{
-      headers: {
-        Authorization: `jwt ${localStorage.getItem('token')}`
-      }
-    })
-      .then(res => {
-        $("span").remove("#tag");
-        this.get_tag_list()
+    if (taged !== undefined){
+      axios.post(`${URL.storetagList}`,{
+        s_id: this.props.store_id,
+        t_id: taged,
+        u_id: localStorage.getItem('user_id')
+      } ,{
+        headers: {
+          Authorization: `jwt ${localStorage.getItem('token')}`
+        }
       })
-      .catch(e => console.log(e))
-    this.setState({
-      _using_tag: true
-    })
+        .then(res => {
+          $("span").remove("#tag");
+          this.get_tag_list()
+        })
+        .catch(e => console.log(e))
+      this.setState({
+        _using_tag: true
+      })
+    }
+    else{
+      alert('태그를 선택해주세요!')
+    }
+    
   }
 
   get_tag_list = () => {
@@ -257,7 +263,6 @@ class DetailStore extends Component {
   }
 
   render() {
-    
     var tag_list = this.state.tags.map((t) =>
       <span id='tag'>
         <button onClick={() => { this.handle_tagging(t.t_id) }} key={t.t_id} >{t.get_tag_title}</button>
@@ -328,6 +333,7 @@ class DetailStore extends Component {
             <p>가게 내용 : {this.state.store.content}</p>
             <p>가게 댓글 수 : {this.state.store.reviews_count}</p>
             <p>가게 평점 : {this.state.store.average_star_score}</p>
+            <p>태그 : {tag_list}</p>
           </div>
           <div id='edit_store_info'>
             <form onSubmit={(e) => {
