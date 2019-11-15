@@ -264,7 +264,7 @@ class DetailStore extends Component {
 
   render() {
     var tag_list = this.state.tags.map((t) =>
-      <span id='tag'>
+      <span  key={t.t_id} id='tag'>
         <button onClick={() => { this.handle_tagging(t.t_id) }} key={t.t_id} >{t.get_tag_title}</button>
       </span>
     )
