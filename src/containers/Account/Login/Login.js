@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Login.css'
 import axios from "axios";
+import URL from '../../URL/URL'
 import KakaoLogin from 'react-kakao-login'
 import NaverLogin from 'react-naver-login';
 import FacebookLogin from 'react-facebook-login';
@@ -33,7 +34,7 @@ class Login extends Component {
     data['user_type'] = 'naver'
 
     var user_list
-    axios.get('http://127.0.0.1:8000/user/')
+    axios.get(`${URL.user_list}`)
       .then(res => {
         user_list = res.data
         var login_data = {}
@@ -64,7 +65,7 @@ class Login extends Component {
     data['user_type'] = 'kakao'
     localStorage.setItem('kakao_token',res.response.access_token)
     var user_list
-    axios.get('http://127.0.0.1:8000/user/')
+    axios.get(`${URL.user_list}`)
       .then(res => {
         user_list = res.data
         var login_data = {}
@@ -95,7 +96,7 @@ class Login extends Component {
     data['user_type'] = 'facebook'
     
     var user_list=[]
-    axios.get('http://127.0.0.1:8000/user/')
+    axios.get(`${URL.user_list}`)
       .then(res => {
         user_list = res.data
         var login_data = {}

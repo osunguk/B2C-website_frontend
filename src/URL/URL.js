@@ -3,6 +3,7 @@ const storefile =     'https://powerful-tor-66622.herokuapp.com/store-file/';
 const mystorefile =   'https://powerful-tor-66622.herokuapp.com/mystore-file/';
 const mystore =       'https://powerful-tor-66622.herokuapp.com/mystore/';
 const review =        'https://powerful-tor-66622.herokuapp.com/review/';
+const review_store =  'https://powerful-tor-66622.herokuapp.com/review/store/'
 const reviewfile =    'https://powerful-tor-66622.herokuapp.com/review-file/';
 const re_review =     'https://powerful-tor-66622.herokuapp.com/review-comment/';
 const token_refresh = 'https://powerful-tor-66622.herokuapp.com/api-token-refresh/'
@@ -13,10 +14,11 @@ const mystoreTag =    'https://powerful-tor-66622.herokuapp.com/mystore-tag/';
 const tagging =       'https://powerful-tor-66622.herokuapp.com/tagging-store/';
 const tag =           'https://powerful-tor-66622.herokuapp.com/tag/';
 const storetagList =  'https://powerful-tor-66622.herokuapp.com/StoreTags/'
+const userlist =      'https://powerful-tor-66622.herokuapp.com/user/';
 
 const login =         'https://powerful-tor-66622.herokuapp.com/rest-auth/login/';
 const logout =        'https://powerful-tor-66622.herokuapp.com/rest-auth/logout/';
-const userlist =      'https://powerful-tor-66622.herokuapp.com/user/';
+
 
 
 
@@ -27,6 +29,7 @@ export default {
   storelist,
   mystorefile,
   mystore,
+  review_store,
   reviewfile,
   review,
   token_refresh,
@@ -38,8 +41,10 @@ export default {
   tagging,
   tag,
   storetagList,
+  userlist,
   //안쓰는거
+
   login,
   logout,
-  userlist,
+
 };
