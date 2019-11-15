@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Header } from '../../components'
+import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom'
 import './MainPage.css'
 import { BodyContainer, BodyContainer2 } from '../../containers';
@@ -47,7 +48,6 @@ class MainPage extends Component {
             })
           }
           else {
-            console.log(res)
             this.setState({
               type: 'A'
             })
@@ -99,6 +99,19 @@ class MainPage extends Component {
       return (
         <div>
           <h1>로그인 중입니다</h1>
+        </div>
+      )
+    }
+    else if (this.state.type === 'A') {
+      return(
+        <div>
+          <p>
+          관리자 계정은 백엔드 서버, Admin 사이트를 이용해 주세요
+          </p>
+          <p>
+          https://powerful-tor-66622.herokuapp.com/admin/
+          </p>
+          <li><Link to='/'>돌아가기</Link></li>
         </div>
       )
     }
