@@ -290,7 +290,7 @@ class DetailStore extends Component {
           {!this.state._using_tag &&
             <form onSubmit={(e) => { this.submit_tag(e) }}>
               {this.state.tagList.map((tag) =>
-                <span>
+                <span key={tag.id}>
                   <input key={tag.id} type='radio' name='tag' value={tag.id} />{tag.tag_title}
                 </span>
               )}
