@@ -10,6 +10,9 @@ import naverLoginButton from '../../../image/naver_login.PNG'
 
 class Login extends Component {
   state = {
+    id : '',
+    password: '',
+    
   }
 
   handle_change = e => {
