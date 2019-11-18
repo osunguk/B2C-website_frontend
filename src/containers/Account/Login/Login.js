@@ -7,6 +7,7 @@ import NaverLogin from 'react-naver-login';
 import FacebookLogin from 'react-facebook-login';
 import kakaoLoginButton from '../../../image/kakao_account_login_btn_medium_narrow.png'
 import naverLoginButton from '../../../image/naver_login.PNG'
+import Kakao from '../SocialLogin/Kakao';
 
 class Login extends Component {
   state = {
@@ -147,6 +148,15 @@ class Login extends Component {
         <button onClick={() => { this.props.display_form('signup') }}> 회원가입 </button><br />
         <div className='SocialLogin'>
           
+          <Kakao 
+            jsKey='beb75fde754395b36f4da5bafb79237a'
+            onSuccess={this.responseKakao}
+            onFailure={this.responseFail}
+          />
+          <br /><br />
+
+
+
           <KakaoLogin
           //beb75fde754395b36f4da5bafb79237a
           //08cb3651eda5236b400da6a4bb2d1e9f
@@ -160,6 +170,8 @@ class Login extends Component {
             onFailure={this.responseFail}
             getProfile="true"
           /><br /><br />
+
+
 
           <FacebookLogin
             appId="2430121853753479"
