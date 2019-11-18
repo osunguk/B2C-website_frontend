@@ -40,6 +40,15 @@ class BodyContainer2 extends Component {
           window.Kakao.Auth.logout()
           console.log('카카오 로그아웃 실행')
         }
+        else if(res.data[0].user_type === 3){
+          window.FB.logout(function(res) {
+          console.log(res)
+         });
+          console.log('페이스북 로그아웃 실행')
+        }
+        else if(res.data[0].user_type === 4){
+          console.log('네이버 로그아웃 실행')
+        }
       }).catch(e => console.log(e))
       localStorage.removeItem('token');
       localStorage.removeItem('username');
