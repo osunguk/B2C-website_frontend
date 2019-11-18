@@ -33,7 +33,9 @@ class BodyContainer2 extends Component {
       localStorage.removeItem('token');
       localStorage.removeItem('username');
       localStorage.removeItem('user_id');
-      
+      window.Kakao.Auth.logout()
+      // window.Kakao.cleanup()
+      console.log(window.Kakao.VERSION)
       // console.log(localStorage.getItem('kakao_token'))
       // console.log(this.props.username.split('@')[1])
       // Axios.post(`https://kapi.kakao.com/v1/user/logout`,{
