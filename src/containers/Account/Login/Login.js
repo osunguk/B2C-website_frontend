@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import './Login.css'
 import axios from "axios";
 import URL from '../../../URL/URL'
-import KakaoLogin from 'react-kakao-login'
+// import KakaoLogin from 'react-kakao-login'
 import NaverLogin from 'react-naver-login';
 import FacebookLogin from 'react-facebook-login';
-import kakaoLoginButton from '../../../image/kakao_account_login_btn_medium_narrow.png'
+// import kakaoLoginButton from '../../../image/kakao_account_login_btn_medium_narrow.png'
 import naverLoginButton from '../../../image/naver_login.PNG'
 import Kakao from '../SocialLogin/Kakao';
 
@@ -157,7 +157,7 @@ class Login extends Component {
 
 
 
-          <KakaoLogin
+          {/* <KakaoLogin
           //beb75fde754395b36f4da5bafb79237a
           //08cb3651eda5236b400da6a4bb2d1e9f
             jsKey='beb75fde754395b36f4da5bafb79237a'
@@ -169,7 +169,7 @@ class Login extends Component {
             onSuccess={this.responseKakao}
             onFailure={this.responseFail}
             getProfile="true"
-          /><br /><br />
+          /><br /><br /> */}
 
 
 

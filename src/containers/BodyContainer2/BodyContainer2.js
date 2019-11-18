@@ -4,7 +4,8 @@ import ProfileContainer from '../ProfileContainer/ProfileContainer'
 import { Redirect } from 'react-router-dom'
 import DetailStore from "../DetailStore/DetailStore";
 import TagContainer from "../TagContainer/TagContainer";
-// import Axios from "axios";
+import Axios from "axios";
+import URL from '../../URL/URL'
 
 class BodyContainer2 extends Component {
 
@@ -30,10 +31,21 @@ class BodyContainer2 extends Component {
       )
     }
     else if (this.props.displayed_form === 'logout') {
+      Axios.get(URL.currentuser, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`
+        }
+      }).then(res => {
+        if(res.data[0].user_type === 2){
+          window.Kakao.Auth.logout()
+          console.log('카카오 로그아웃 실행')
+        }
+      }).catch(e => console.log(e))
       localStorage.removeItem('token');
       localStorage.removeItem('username');
       localStorage.removeItem('user_id');
-      window.Kakao.Auth.logout()
+
+      
       return (
         <div>
           <Redirect to='/auth' />
