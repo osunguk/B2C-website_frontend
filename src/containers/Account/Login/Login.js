@@ -8,12 +8,13 @@ import FacebookLogin from 'react-facebook-login';
 // import kakaoLoginButton from '../../../image/kakao_account_login_btn_medium_narrow.png'
 import naverLoginButton from '../../../image/naver_login.PNG'
 import Kakao from '../SocialLogin/Kakao';
+import Naver from '../SocialLogin/Naver'
 
 class Login extends Component {
   state = {
-    id : '',
+    id: '',
     password: '',
-    
+
   }
 
   handle_change = e => {
@@ -67,7 +68,7 @@ class Login extends Component {
     data['email'] = res.profile.kakao_account.email
     data['type'] = false
     data['user_type'] = 'kakao'
-    localStorage.setItem('kakao_token',res.response.access_token)
+    localStorage.setItem('kakao_token', res.response.access_token)
     var user_list
     axios.get(`${URL.userlist}`)
       .then(res => {
@@ -91,42 +92,44 @@ class Login extends Component {
   }
 
   responseFacebook = (res) => {
-    var data = {}
-    data['id'] = `${res.name}@${res.id}`
-    data['password'] = 'asdqwe123!'
-    data['password_check'] = 'asdqwe123!'
-    data['email'] = res.email
-    data['type'] = false
-    data['user_type'] = 'facebook'
-    
-    var user_list=[]
-    axios.get(`${URL.userlist}`)
-      .then(res => {
-        user_list = res.data
-        var login_data = {}
-        login_data['id'] = data.id
-        login_data['password'] = data.password
-        var check = false
-        for (let i = 0; i < user_list.length; i++) {
-          if (data.id === user_list[i].username) {
-            check = true
+    if (res.status !== 'unknown') {
+      var data = {}
+      data['id'] = `${res.name}@${res.id}`
+      data['password'] = 'asdqwe123!'
+      data['password_check'] = 'asdqwe123!'
+      data['email'] = res.email
+      data['type'] = false
+      data['user_type'] = 'facebook'
+
+      var user_list = []
+      axios.get(`${URL.userlist}`)
+        .then(res => {
+          user_list = res.data
+          var login_data = {}
+          login_data['id'] = data.id
+          login_data['password'] = data.password
+          var check = false
+          for (let i = 0; i < user_list.length; i++) {
+            if (data.id === user_list[i].username) {
+              check = true
+            }
           }
-        }
-        if (check) {
-          this.props.handle_login(false, login_data)
-          
-        } else {
-          this.props.handle_signup(false, data)
-        }
-      })
-      .catch(e => console.log(e))
+          if (check) {
+            this.props.handle_login(false, login_data)
+
+          } else {
+            this.props.handle_signup(false, data)
+          }
+        })
+        .catch(e => console.log(e))
+    }
   }
 
   responseFail = e => {
     alert('로그인 실패')
     console.log(e)
   }
-  
+
   render() {
 
     return (
@@ -147,8 +150,8 @@ class Login extends Component {
         </form>
         <button onClick={() => { this.props.display_form('signup') }}> 회원가입 </button><br />
         <div className='SocialLogin'>
-          
-          <Kakao 
+
+          <Kakao
             jsKey='beb75fde754395b36f4da5bafb79237a'
             onSuccess={this.responseKakao}
             onFailure={this.responseFail}
@@ -179,15 +182,19 @@ class Login extends Component {
             fields="name,email"
             callback={this.responseFacebook}
           />
-          
+
+          <Naver />
+          <br /><br />
+
+
           <NaverLogin
             clientId="zd77osJ0K94OH8504tNu"
             callbackUrl="https://enigmatic-island-94143.herokuapp.com/auth"
-            render={(props) => 
-            <div>
-              <img width='23.5%' height='65px' src ={naverLoginButton} onClick={props.onClick} alt='NAVER LOGIN BUTTON'/>
-            </div>}
-            onSuccess={(naverUser) => {this.responseNaver(naverUser)}}
+            render={(props) =>
+              <div>
+                <img width='23.5%' height='65px' src={naverLoginButton} onClick={props.onClick} alt='NAVER LOGIN BUTTON' />
+              </div>}
+            onSuccess={(naverUser) => { this.responseNaver(naverUser) }}
             onFailure={(e) => console.error(e)}
           />
         </div>
