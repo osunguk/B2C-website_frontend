@@ -9,6 +9,7 @@ import DetailStore from './DetailStore/DetailStore'
 import ReviewContainer from './ReviewContainer/ReviewContainer'
 import TagContainer from './TagContainer/TagContainer'
 import Kakao from './Account/SocialLogin/Kakao'
+import Naver from './Account/SocialLogin/Naver'
 
 export {
     Signup,
@@ -22,4 +23,5 @@ export {
     ReviewContainer,
     TagContainer,
     Kakao,
+    Naver,
 };
