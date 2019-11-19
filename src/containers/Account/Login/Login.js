@@ -212,13 +212,13 @@ class Login extends Component {
 
           <Naver
             clientId="zd77osJ0K94OH8504tNu"
-            callbackUrl="http://localhost:3000/auth"
+            callbackUrl="https://enigmatic-island-94143.herokuapp.com/auth"
           />
           <br /><br />
 
           <NaverLogin
             clientId="zd77osJ0K94OH8504tNu"
-            callbackUrl="http://localhost:3000/auth"
+            callbackUrl="https://enigmatic-island-94143.herokuapp.com/auth"
             render={(props) =>
               <div>
                 <img width='23.5%' height='65px' src={naverLoginButton} onClick={props.onClick} alt='NAVER LOGIN BUTTON' />

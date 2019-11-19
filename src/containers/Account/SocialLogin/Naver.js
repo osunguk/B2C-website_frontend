@@ -7,7 +7,7 @@ class Naver extends Component {
     const state = naver_id_login.getUniqState();
 
     naver_id_login.setButton('green', 1, 40);
-    naver_id_login.setDomain('http://localhost:3000/auth');
+    naver_id_login.setDomain('https://enigmatic-island-94143.herokuapp.com/auth');
     naver_id_login.setState(state);
     naver_id_login.setPopup();
     naver_id_login.init_naver_id_login();
