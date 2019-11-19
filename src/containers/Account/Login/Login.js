@@ -230,7 +230,7 @@ class Login extends Component {
           <br />
           <br />
           <GoogleLogin
-            clientId="89277866744-o1124cc45l7h66hu1lf5d4ku29rhp6bm.apps.googleusercontent.com"
+            clientId="89277866744-sl0c1han62n48g44hbt62a4j2ikl9ovq.apps.googleusercontent.com"
             buttonText="Login"
             onSuccess={this.responseGoogle}
             onFailure={(e) => console.error(e)}
