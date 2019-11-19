@@ -5,6 +5,7 @@ import URL from '../../../URL/URL'
 // import KakaoLogin from 'react-kakao-login'
 import NaverLogin from 'react-naver-login';
 import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login'
 // import kakaoLoginButton from '../../../image/kakao_account_login_btn_medium_narrow.png'
 import naverLoginButton from '../../../image/naver_login.PNG'
 import Kakao from '../SocialLogin/Kakao';
@@ -125,6 +126,38 @@ class Login extends Component {
     }
   }
 
+  responseGoogle = (res) => {
+    console.log(res)
+    var data = {}
+    data['id'] = `${res.w3.ig}@${res.googleId}`
+    data['password'] = 'asdqwe123!'
+    data['password_check'] = 'asdqwe123!'
+    data['email'] = res.w3.U3
+    data['type'] = false
+    data['user_type'] = 'facebook'
+    var user_list = []
+      axios.get(`${URL.userlist}`)
+        .then(res => {
+          user_list = res.data
+          var login_data = {}
+          login_data['id'] = data.id
+          login_data['password'] = data.password
+          var check = false
+          for (let i = 0; i < user_list.length; i++) {
+            if (data.id === user_list[i].username) {
+              check = true
+            }
+          }
+          if (check) {
+            this.props.handle_login(false, login_data)
+
+          } else {
+            this.props.handle_signup(false, data)
+          }
+        })
+        .catch(e => console.log(e))
+  }
+
   responseFail = e => {
     alert('로그인 실패')
     console.log(e)
@@ -157,9 +190,6 @@ class Login extends Component {
             onFailure={this.responseFail}
           />
           <br /><br />
-
-
-
           {/* <KakaoLogin
           //beb75fde754395b36f4da5bafb79237a
           //08cb3651eda5236b400da6a4bb2d1e9f
@@ -173,9 +203,6 @@ class Login extends Component {
             onFailure={this.responseFail}
             getProfile="true"
           /><br /><br /> */}
-
-
-
           <FacebookLogin
             appId="2430121853753479"
             autoLoad={false}
@@ -183,19 +210,31 @@ class Login extends Component {
             callback={this.responseFacebook}
           />
 
-          <Naver />
+          <Naver
+            clientId="zd77osJ0K94OH8504tNu"
+            callbackUrl="http://localhost:3000/auth"
+          />
           <br /><br />
-
 
           <NaverLogin
             clientId="zd77osJ0K94OH8504tNu"
-            callbackUrl="https://enigmatic-island-94143.herokuapp.com/auth"
+            callbackUrl="http://localhost:3000/auth"
             render={(props) =>
               <div>
                 <img width='23.5%' height='65px' src={naverLoginButton} onClick={props.onClick} alt='NAVER LOGIN BUTTON' />
               </div>}
             onSuccess={(naverUser) => { this.responseNaver(naverUser) }}
             onFailure={(e) => console.error(e)}
+          />
+          <br />
+          <br />
+          <br />
+          <GoogleLogin
+            clientId="89277866744-o1124cc45l7h66hu1lf5d4ku29rhp6bm.apps.googleusercontent.com"
+            buttonText="Login"
+            onSuccess={this.responseGoogle}
+            onFailure={(e) => console.error(e)}
+            cookiePolicy={'single_host_origin'}
           />
         </div>
       </div>

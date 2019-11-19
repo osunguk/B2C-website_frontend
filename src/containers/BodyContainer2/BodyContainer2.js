@@ -36,25 +36,28 @@ class BodyContainer2 extends Component {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
       }).then(res => {
-        if(res.data[0].user_type === 2){
+        if (res.data[0].user_type === 2) {
           window.Kakao.Auth.logout()
-          console.log('카카오 로그아웃 실행')
         }
-        else if(res.data[0].user_type === 3){
-          window.FB.logout(function(res) {
-          console.log(res)
-         });
-          console.log('페이스북 로그아웃 실행')
+        else if (res.data[0].user_type === 3) {
+          window.FB.logout(function () {
+            window.gapi.auth2.signOut()
+          });
         }
-        else if(res.data[0].user_type === 4){
+        else if (res.data[0].user_type === 4) {
           console.log('네이버 로그아웃 실행')
+        }
+        else if (res.data[0].user_type === 5) {
+          const google_auth = window.gapi.auth2.getAuthInstance()
+          google_auth.signOut()
+          google_auth.disconnect()
         }
       }).catch(e => console.log(e))
       localStorage.removeItem('token');
       localStorage.removeItem('username');
       localStorage.removeItem('user_id');
 
-      
+
       return (
         <div>
           <Redirect to='/auth' />
@@ -63,20 +66,20 @@ class BodyContainer2 extends Component {
     }
     else if (this.props.displayed_form === 'store') {
       return (
-        <DetailStore 
-          type={this.props.type} 
-          store_id={this.props.store_id} 
-          handle_review={this.handle_review} 
-          check={this.check} 
+        <DetailStore
+          type={this.props.type}
+          store_id={this.props.store_id}
+          handle_review={this.handle_review}
+          check={this.check}
           display_form={this.props.display_form}
           trans_tag_id={this.props.trans_tag_id}
         />
       )
     }
 
-    else if(this.props.displayed_form === 'tag') {
-      return(
-        <TagContainer t_id={this.props.t_id} display_form={this.props.display_form}/>
+    else if (this.props.displayed_form === 'tag') {
+      return (
+        <TagContainer t_id={this.props.t_id} display_form={this.props.display_form} />
       )
     }
     else {
